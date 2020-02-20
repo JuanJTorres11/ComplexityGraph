@@ -44,7 +44,7 @@ def plot():
     plt.plot(t, nlog(t), label='n * Logaritimico')
     print ("Los datos n*log son: \n")
     print (nlog(t))
-
+    plt.legend()
     plt.show()
 
 
