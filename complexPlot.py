@@ -33,23 +33,33 @@ def plot():
     
     print ("Los datos en x son:")
     print (t)
-    plt.plot(xpoints, ypoints, 'or', label='Datos Propios')
+    plt.plot(xpoints, ypoints, color='r', label='Datos Propios')
     plt.plot(t, t, label='Lineal')
-    plt.plot(t, t ** 2, label='Cuadratico')
+    plt.plot(t, t ** 2, linestyle=':',color='black', label='Cuadratico')
     print ("Los datos cuadraticos son: \n")
     print ( t**2)
-    plt.plot(t, array_log(t), label='Logaritimico')
+    plt.plot(t, array_log(t), linestyle='--', color='purple', label='Logaritimico')
     print ("Los datos logaritmicos son: \n")
     print (array_log(t))
-    plt.plot(t, nlog(t), label='n * Logaritimico')
+    plt.plot(t, nlog(t), label='n * Logaritimico', color='green',linestyle='-.')
     print ("Los datos n*log son: \n")
     print (nlog(t))
     plt.legend()
     plt.show()
 
 
-log(10, 90)
-log(20,420)
-log(30,850)
-log(60,3700)
-plot()
+def test():
+    log(10, 90)
+    log(20,420)
+    log(30,850)
+    log(60,3700)
+    plot()
+
+
+if __name__=='__main__':
+    #test()
+    log(100, 4000)
+    log(200, 8000)
+    log(400,16000)
+    log(800,32000)
+    plot()
