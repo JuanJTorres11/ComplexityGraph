@@ -55,11 +55,21 @@ def test():
     log(60,3700)
     plot()
 
-
-if __name__=='__main__':
-    #test()
+def datos_lineales():
     log(100, 4000)
     log(200, 8000)
     log(400,16000)
     log(800,32000)
     plot()
+
+def datos_cuadraticos():
+    log(100, 1000)
+    log(200, 4000)
+    log(400,16000)
+    log(800,64000)
+    plot()
+
+
+if __name__=='__main__':
+    #test()
+    datos_cuadraticos()
