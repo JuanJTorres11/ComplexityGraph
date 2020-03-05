@@ -4,72 +4,67 @@ import math as m
 
 xpoints=[]
 ypoints=[]
-img = plt.imread('complexity-graph.png')
 
-def log(x,y):
-    xpoints.append(x)
-    ypoints.append(y)
+def registrar(numero,tiempo):
+    xpoints.append(numero)
+    ypoints.append(tiempo)
 
 
-def array_log(array):
+def log(array, constante = 1):
     array2 = array.copy()
     for i in range(len(array)):
-        array2[i] = m.log(array[i], 2)
+        array2[i] = m.log(array[i], 2) * constante
     return array2
 
 
-def nlog(array):
+def nlog(array, constante = 1):
     array2 = array.copy()
     for i in range(len(array)):
-        array2[i] = array[i] * m.log(array[i], 2)
+        array2[i] = array[i] * m.log(array[i], 2) * constante
     return array2
 
 
-def plot():
+def plot(t, constante = 1):
+
     plt.title("Grafica complejidad")
     plt.xlabel("Número de datos ingresados")
     plt.ylabel("Tiempo transcurrido")
-    t = np.linspace(xpoints[0], xpoints[len(xpoints) - 1])
-    
-    print ("Los datos en x son:")
-    print (t)
+
     plt.plot(xpoints, ypoints, color='r', label='Datos Propios')
-    plt.plot(t, t, label='Lineal')
-    plt.plot(t, t ** 2, linestyle=':',color='black', label='Cuadratico')
-    print ("Los datos cuadraticos son: \n")
-    print ( t**2)
-    plt.plot(t, array_log(t), linestyle='--', color='purple', label='Logaritimico')
-    print ("Los datos logaritmicos son: \n")
-    print (array_log(t))
-    plt.plot(t, nlog(t), label='n * Logaritimico', color='green',linestyle='-.')
-    print ("Los datos n*log son: \n")
-    print (nlog(t))
+
+    plt.plot(t, np.full(t.size, constante), label='Constante')
+
+    plt.plot(t, t * constante, label='Lineal')
+
+    plt.plot(t, (t ** 2) * constante, linestyle=':',color='black', label='Cuadratico')
+
+    plt.plot(t, log(t, constante), linestyle='--', color='purple', label='Logaritimico')
+        
+    plt.plot(t, nlog(t, constante), color='green',linestyle='-.', label='n * Logaritimico')
+        
     plt.legend()
     plt.show()
 
+def main():
 
-def test():
-    log(10, 90)
-    log(20,420)
-    log(30,850)
-    log(60,3700)
-    plot()
+    n = int(input ("Indique cuántas tuplas de datos ingresará\n"))
 
-def datos_lineales():
-    log(100, 4000)
-    log(200, 8000)
-    log(400,16000)
-    log(800,32000)
-    plot()
+    print ("Ingresa los datos separados por comas. Ej: 5,30")
+    for i in range(n):
+        entrada = input()
+        datos = entrada.split(",")
+        registrar(float(datos[0]),float(datos[1]))
 
-def datos_cuadraticos():
-    log(100, 1000)
-    log(200, 4000)
-    log(400,16000)
-    log(800,64000)
-    plot()
+    # Crea un array con datos generados entre el inicio y final de los ingresados por el usuario
+    t = np.linspace(xpoints[0], xpoints[len(xpoints) - 1]) 
 
+    # Pregunta la constante para las graficas
+    constante = float(input("Ingrese la constante para ajustar mejor sus datos (0 para terminar el programa)\n"))
+
+    while constante != 0:
+        plot(t, constante)
+        constante = float(input("Ingrese la constante para ajustar mejor sus datos (0 para terminar el programa)\n"))
 
 if __name__=='__main__':
     #test()
-    datos_cuadraticos()
+    main()
