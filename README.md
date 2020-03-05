@@ -13,4 +13,4 @@ Cuando el programa inicie, debe indicar cuántas duplas <n,tiempo> va a ingresar
 
 Luego se le indicará ingresar una constante para ajustar las gráficas lineal, cuadrática y logarítmicas a sus datos. Por ejemplo: con una constante de 0.5, el programa produciría lo siguiente
 
-![Gráficas](complexity-graph.PNG)
+![Gráficas](./complexity-graph.png)
