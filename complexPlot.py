@@ -26,7 +26,7 @@ def nlog(array, constante = 1):
 
 def plot(t, constante = 1):
 
-    plt.title("Grafica complejidad")
+    plt.title("Gráfica complejidad")
     plt.xlabel("Número de datos ingresados")
     plt.ylabel("Tiempo transcurrido")
 
@@ -36,11 +36,11 @@ def plot(t, constante = 1):
 
     plt.plot(t, t * constante, label='Lineal')
 
-    plt.plot(t, (t ** 2) * constante, linestyle=':',color='black', label='Cuadratico')
+    plt.plot(t, (t ** 2) * constante, linestyle=':',color='black', label='Cuadrático')
 
-    plt.plot(t, log(t, constante), linestyle='--', color='purple', label='Logaritimico')
+    plt.plot(t, log(t, constante), linestyle='--', color='purple', label='Logarítmico')
         
-    plt.plot(t, nlog(t, constante), color='green',linestyle='-.', label='n * Logaritimico')
+    plt.plot(t, nlog(t, constante), color='green',linestyle='-.', label='Linearítmico')
         
     plt.legend()
     plt.show()
